@@ -1,0 +1,38 @@
+<div>
+
+  <div *ngIf="!showLogin" class="sign-up">
+    <h3 style="margin: 2%;">Non Registered Customer Details</h3>
+    <form #userSignUp="ngForm" class="common-form" (ngSubmit)="signUp(userSignUp.value)">
+      <div style="margin: 2%;">
+        <label style="margin-right: 5px;">Enter Name:</label>
+        <input type="text" class="form-input" name="name" placeholder="Enter Name" ngModel />
+      </div>
+      <div style="margin: 2%;">
+        <label style="margin-right: 5px;">Enter Email:</label>
+        <input type="text" class="form-input" name="email" placeholder="Enter Email" ngModel />
+      </div>
+      <div style="margin: 2%;">
+        <label style="margin-right: 4px;">Enter Mobile:</label>
+        <input type="text" class="form-input" name="mobile" placeholder="Enter mobile number" ngModel />
+      </div>
+      <button class="form-button" style="margin: 2%;">Register Customer</button>
+      <p style="margin: 2%;">Registered Customer ? <a (click)="openLogin()"><em>Click Here</em></a></p>
+    </form>
+  </div>
+
+
+  <div *ngIf="showLogin" class="login">
+    <h3>Registered Customer</h3>
+    <form #userLogin="ngForm" class="common-form" (ngSubmit)="login(userLogin.value)">
+      <p class="error-p">{{authError}}</p>
+      <input type="text" class="form-input" name="email" placeholder="Enter Email" ngModel email #email="ngModel"
+        required />
+      <p class="invalid-input"><span *ngIf="email.invalid && email.touched ">Please enter valid input</span></p>
+      <input type="text" class="form-input" name="mobile" placeholder="Enter mobile number" ngModel minlength="2"
+        maxlength="20" #mobile="ngModel" required />
+      <p class="invalid-input"><span *ngIf="mobile.invalid && mobile.touched ">Please enter valid input</span></p>
+      <button [disabled]="userLogin.invalid" class="form-button">Submit Details</button>
+      <p>Non Registered Customer ? <a (click)="openSignUp()"><em>Click Here</em></a></p>
+    </form>
+  </div>
+</div>

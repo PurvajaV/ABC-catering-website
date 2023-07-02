@@ -1,0 +1,65 @@
+
+
+
+
+<div class="checkout">
+    <h3> Supplier Checkout</h3>
+    <div class="row">
+        <div class="col-sm-7">
+            <h3>Add shipping address</h3>
+            <p class="message-p">{{orderMsg}}</p>
+            <form #orderData="ngForm" class="common-form" (ngSubmit)="orderNow(orderData.value)">
+                <!-- <input type="text" class="form-input" name="email" placeholder="Enter User Email" ngModel /> -->
+                <input type="text" class="form-input" name="address" placeholder="Enter Branch Address" ngModel />
+                <input type="text" class="form-input" name="contact" placeholder="Enter contact details" ngModel />
+                <button kendoButton themeColor="primary" class="form-button" class="form-button">Order Now</button>
+            </form>
+        </div>
+        <div class="col-sm-5">
+            <h3>Total Amount: {{totalPrice}}</h3>
+            <h4>Payment Method : <b>Pay on delivery</b></h4>
+        </div>
+    </div>
+
+    <!-- <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+        <div class="address">
+            <div class="for">
+                <h3>Invoice For</h3>
+                <p>
+                    <b>{{userName}}</b>
+                </p>
+            </div>
+
+            <div class="from">
+                <h3>From</h3>
+                <p>
+                    ABC Catering
+                </p>
+            </div>
+        </div>
+
+        <div class="items">
+            <kendo-grid [data]="cartData" scrollable="none">
+                <kendo-grid-column field="name" title="Product" [width]="120">
+                    <ng-template kendoGridFooterTemplate> Total:  {{totalPrice}} </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column field="price" format="{0:c}" title="Price" [width]="120" [style]="rightAlign"
+                    [footerStyle]="rightAlign">
+                </kendo-grid-column>
+                <kendo-grid-column field="quantity" title="Quantity" [width]="120" [style]="rightAlign"
+                    [footerStyle]="rightAlign">
+                </kendo-grid-column>
+               
+            </kendo-grid>
+            
+        </div>
+
+    </kendo-pdf-export>
+
+    <div class="example-config">
+        <button kendoButton (click)="pdf.saveAs('my_document.pdf')">
+            Save As PDF...
+        </button>
+    </div> -->
+
+</div>

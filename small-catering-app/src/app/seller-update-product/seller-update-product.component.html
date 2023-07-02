@@ -1,0 +1,28 @@
+<div class="update-product" style="margin: 3%;width: auto;">
+
+    <p class="message">{{productMessage}}</p>
+    <form class="k-form" #addProduct="ngForm" (ngSubmit)="submit(addProduct.value)">
+        <fieldset class="k-form-fieldset">
+            <legend class="k-form-legend">Update Product</legend>
+
+            <kendo-formfield>
+                <kendo-label text="Enter Product Name"></kendo-label>
+                <input type="text" name="name" ngModel="{{productData?.name}}" kendoTextBox required />
+            </kendo-formfield>
+
+            <kendo-formfield>
+                <kendo-label text="Enter Product Price"></kendo-label>
+                <input type="text" name="price" ngModel="{{productData?.price}}" kendoTextBox required />
+            </kendo-formfield>
+
+            <kendo-formfield>
+                <kendo-label text="Enter Product Image URL"></kendo-label>
+                <input type="text" name="image" ngModel="{{productData?.image}}" kendoTextBox required />
+            </kendo-formfield>
+
+            <div class="k-form-buttons" style="margin-top: 5%;">
+                <button kendoButton themeColor="primary" class="form-button">Update Product</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

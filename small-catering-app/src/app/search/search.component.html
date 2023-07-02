@@ -1,0 +1,24 @@
+<kendo-tilelayout [columns]="3" autoFlow="none" [gap]="10" [rowHeight]="350">
+  <kendo-tilelayout-item *ngFor="let item of searchResult">
+    <kendo-tilelayout-item-header style="height: 20%;">
+      <h3><a routerLink="/details/{{item.id}}">{{item.name}}</a></h3>
+    </kendo-tilelayout-item-header>
+    <kendo-tilelayout-item-body><a routerLink="/details/{{item.id}}">
+      <img src="{{item.image}}" alt="product image" style="width: 50%;height:50%" ></a>
+      <h3>Price:<span>{{item.price}}</span></h3>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+</kendo-tilelayout>
+
+
+<!-- <div class="row search-item" *ngFor="let item of searchResult">
+    <div class="col-sm-3">
+      <a routerLink="/details/{{item.id}}">  <img src="{{item.image}}" alt=""></a>
+    </div>
+    <div class="col-sm-8 details">
+        <h6>  <a routerLink="/details/{{item.id}}"> {{item.name}} </a></h6>
+        <p><b>Price:{{item.price}}</b></p>
+        <p><span>Color:{{item.color}}</span><span>Category: {{item.category}}</span></p>
+        <p>{{item.description}}</p>
+    </div>
+</div> -->

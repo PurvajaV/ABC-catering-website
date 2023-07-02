@@ -1,0 +1,40 @@
+<h3>Purchasable Items</h3>
+<kendo-tilelayout [columns]="3" autoFlow="none" [gap]="10" [rowHeight]="350">
+  <kendo-tilelayout-item *ngFor="let item of purchaseItemData">
+    <kendo-tilelayout-item-header style="height: 20%;">
+      <h3>{{item.name}}</h3>
+    </kendo-tilelayout-item-header>
+    <kendo-tilelayout-item-body>
+      <img src="{{item.image}}" alt="product image" style="width: 50%;height:50%" >
+      <h3>Price:<span>{{item.price}}</span></h3>
+      
+      <div class="product-footer">
+        <button kendoButton themeColor="primary" class="form-button" routerLink="/purchase-view/{{item.id}}">View Details</button>
+      </div>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+</kendo-tilelayout>
+
+
+
+
+<!-- <div class="product-list-wrapper">
+    <h1>Purchasable Items</h1>
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let item of purchaseItemData">
+        <div class="product-item">
+          <img src="{{item.image}}" alt="" style="width: 35%;">
+          <div class="product-details">
+            <h6 class="name-head">{{item.name}}</h6>
+            <div class="product-price">
+              <h6>Price:{{item.price}}</h6>
+            </div>    
+          </div>
+          <div class="product-footer">
+            <button  routerLink="/purchase-view/{{item.id}}">View Details</button> -->
+            <!-- <a href="">Add to Cart</a> -->
+          <!-- </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

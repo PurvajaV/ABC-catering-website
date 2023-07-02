@@ -1,0 +1,132 @@
+<h3>Purchase Orders</h3>
+<kendo-pdf-export #pdf paperSize="A1" margin="1cm">
+    <kendo-tilelayout [columns]="3" autoFlow="none">
+        <kendo-tilelayout-item *ngFor="let order of orderData">
+            <kendo-tilelayout-item-header>
+                <div>
+                    <h5>Invoice For</h5>
+                    <p>
+                        ABC Catering<br />
+                        Address:{{order.address}}<br />
+                        {{order.contact}}
+                    </p>
+
+                    <h5>From</h5>
+                    <p>
+                        {{supplierName}} <br />
+                        <br />
+                    </p>           
+                </div>
+                <div>
+                    <button kendoButton themeColor="primary" class="form-button" (click)="pdf.saveAs('my_document.pdf')" style="margin-right:2px ;">
+                        Save As PDF...
+                    </button>
+                    <button kendoButton themeColor="primary" class="form-button" (click)="cancelOrder(order.id)">Cancel Order</button>
+                </div>
+            </kendo-tilelayout-item-header>
+            <kendo-tilelayout-item-body>
+                <table>
+                    <thead>
+                        <h3>Orders</h3>
+                        <tr>
+                            <th><span><b>Invoice Number </b></span></th>
+                            <th> <span><b>Name</b></span></th>
+                            <th><span><b>Price</b></span></th>
+                            <th> <span><b>Quantity</b></span></th>
+                            <th> <span><b>Total Price</b></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span>INV00{{order.id}}</span>
+                            </td>
+                            <td>
+                                <span>{{order.name}}</span>
+                            </td>
+                            <td>
+                                <span>{{order.price}}</span>
+                            </td>
+                            <td>
+                                <span>{{order.quantity}}</span>
+                            </td>
+                            <td>
+                                <span>{{order.totalPrice}}</span>
+                            </td>
+                        </tr>
+                      
+                    </tbody>
+                </table>
+            </kendo-tilelayout-item-body>
+        </kendo-tilelayout-item>
+    </kendo-tilelayout>
+</kendo-pdf-export>
+
+
+
+
+<!-- <div class="my-orders">
+    <h1>Purchase Orders</h1>
+
+    <div class="row" *ngFor="let order of orderData">
+        <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+
+
+
+
+            <div class="address">
+                <div class="for">
+                    <h3>Invoice For</h3>
+                    <p>
+                        ABC Catering<br />
+                        Address:{{order.address}}<br />
+                        {{order.contact}}
+                    </p>
+                </div>
+
+                <div class="from">
+                    <h3>From</h3>
+                    <p>
+                        {{supplierName}} <br />
+                        <br />
+                    </p>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-2">
+                <h5>Orders</h5>
+            </div>
+            <div class="col-sm-2">
+                <span><b>Invoice Number </b></span>
+                <span>INV00{{order.id}}</span>
+            </div>
+            <div class="col-sm-2">
+                <span><b>Name</b></span>
+                <span>{{order.name}}</span>
+            </div>
+            <div class="col-sm-2">
+                <span><b>Price</b></span>
+                <span>{{order.price}}</span>
+            </div>
+            <div class="col-sm-2">
+                <span><b>Quantity</b></span>
+                <span>{{order.quantity}}</span>
+            </div>
+            <div class="col-sm-2">
+                <span><b>Total Price</b></span>
+                <span>{{order.totalPrice}}</span>
+            </div>
+        </kendo-pdf-export>
+
+        <div class="example-config">
+            <button kendoButton (click)="pdf.saveAs('my_document.pdf')">
+                Save As PDF...
+            </button>
+            <div class="col-sm-2">
+                <button class="form-button" (click)="cancelOrder(order.id)">Cancel Order</button>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,69 @@
+<div style="margin: 3%;width: fit-content;">
+    <div class="example-wrap" *ngIf="!showLogin">
+        <form class="k-form" #sellerSignUp="ngForm" (ngSubmit)="signUp(sellerSignUp.value)">
+            <fieldset class="k-form-fieldset">
+                <legend class="k-form-legend">Seller Signup Form</legend>
+                <kendo-formfield>
+                    <kendo-label text="User Name"></kendo-label>
+                    <input type="text" placeholder="Enter Name" name="name" ngModel kendoTextBox required />
+
+
+                    <kendo-formerror>Error: First name is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label text="Password"></kendo-label>
+                    <input type="password" name="password" ngModel kendoTextBox required />
+
+
+                    <kendo-formerror>Error: Password is required</kendo-formerror>
+                </kendo-formfield>
+
+
+                <kendo-formfield>
+                    <kendo-label text="Email"></kendo-label>
+                    <input type="text" name="email" ngModel kendoTextBox required />
+
+
+                    <kendo-formerror>Error: Not valid email format</kendo-formerror>
+                </kendo-formfield>
+
+
+                <div class="k-form-buttons"  style="margin-top: 5%;">
+                    <button kendoButton themeColor="primary" class="form-button">Sign Up</button>
+                    <a class="auth-toggle-link" (click)="openLogin()" style="cursor: pointer;">Already have account? Click for <em>Login</em></a>
+
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div *ngIf="showLogin" class="">
+        <form class="k-form" #sellerLogin="ngForm" (ngSubmit)="login(sellerLogin.value)">
+            <fieldset class="k-form-fieldset">
+                <legend class="k-form-legend">Seller Login Form</legend>
+                <kendo-formfield>
+                    <kendo-label text="Email"></kendo-label>
+                    <input type="text" placeholder="Enter Email" name="email" ngModel kendoTextBox
+                        required />
+
+                    <kendo-formerror>Error: Email is required</kendo-formerror>
+                </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label text="Password"></kendo-label>
+                    <input type="password" placeholder="Enter password" name="password" ngModel
+                        kendoTextBox required />
+
+                    <kendo-formerror>Error: Password is required</kendo-formerror>
+                </kendo-formfield>
+
+
+                <div class="k-form-buttons"  style="margin-top: 5%;">
+                    <button kendoButton themeColor="primary" class="form-button">Login</button>
+                    <a class="auth-toggle-link" (click)="openSignUp()" style="cursor: pointer;">Don't have account? Click for <em>sign-up</em></a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

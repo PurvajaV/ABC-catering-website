@@ -1,0 +1,106 @@
+<h3>Supplier Cart</h3>
+<kendo-tilelayout [columns]="5" autoFlow="none" [gap]="10">
+    <kendo-tilelayout-item *ngFor="let cart of supplierCartData">
+        <kendo-tilelayout-item-header style="height: 20%;">
+            <h3>{{cart.name}}</h3>
+        </kendo-tilelayout-item-header>
+        <kendo-tilelayout-item-body>
+            <img src="{{cart.image}}" alt="" style="height: 50%;width: 50%;">
+            <div> Price : {{cart.price}}</div>
+            <div> Quantity : {{cart.quantity}}</div>
+            <button kendoButton themeColor="primary" class="form-button" (click)="removeToCart(cart.id)">Remove To Cart</button>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+</kendo-tilelayout>
+
+<kendo-tilelayout [columns]="2" autoFlow="none" [gap]="10">
+    <kendo-tilelayout-item [col]="1">
+        <kendo-tilelayout-item-header>
+            <div> <h3>Summary
+                <button kendoButton themeColor="primary" class="form-button" (click)="checkout()" style="float: right;">Checkout</button>
+            </h3>
+                
+            </div>
+           
+        </kendo-tilelayout-item-header>
+        
+        <kendo-tilelayout-item-body>
+            <table style="border: 1px solid black;">
+                <thead >
+                    <tr>
+                        <th>Amount</th>
+                        <th>Tax</th>
+                        <th>Delivery</th>
+                        <th>Discount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{priceSummary.price}}
+                        </td>
+                        <td>
+                            {{priceSummary.tax}}
+                        </td>
+                        <td>
+                            {{priceSummary.delivery}}
+                        </td>
+                        <td>
+                            {{priceSummary.discount}}
+                        </td>
+                        <td>
+                            {{priceSummary.total}}
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+</kendo-tilelayout>
+
+
+<!-- <div class="cart-page">
+    <h1>
+        Cart Page
+    </h1>
+    <div class="row">
+        <div class="col-sm-8 details">
+            <ul *ngFor="let cart of supplierCartData">
+                
+                <li>
+                    <img src="{{cart.image}}" alt="" style="width: 45%;">
+                </li>
+                <li>
+                    <span> {{cart.name}}</span>
+                </li>
+                <li>
+                    <span> Price : {{cart.price}}</span>
+                </li>
+                <li>
+                    <span> Quantity : {{cart.quantity}}</span>
+                </li>
+                <li>
+                    <button class="form-button" (click)="removeToCart(cart.id)">Remove To Cart</button>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-sm-4 summary">
+            <h3>Summary</h3>
+            <ul>
+                <li> <span>Amount:</span><span>{{priceSummary.price}}</span></li>
+                <li> <span>Tax:</span><span>{{priceSummary.tax}}</span></li>
+                <li> <span>Delivery:</span><span>{{priceSummary.delivery}}</span></li>
+                <li> <span>Discount:</span><span>{{priceSummary.discount}}</span></li>
+                <li> <span>
+                        <h4>Total</h4>
+                    </span> <span>
+                        <h4>{{priceSummary.total}}</h4>
+                    </span></li>
+                <button (click)="checkout()" class="form-button max-width">Checkout</button>
+            </ul>
+        </div>
+    </div>
+</div> -->

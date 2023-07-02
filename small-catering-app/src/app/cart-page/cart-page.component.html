@@ -1,0 +1,61 @@
+<h3>Customer Cart</h3>
+<kendo-tilelayout [columns]="5" autoFlow="none" [gap]="10">
+    <kendo-tilelayout-item *ngFor="let cart of cartData">
+        <kendo-tilelayout-item-header style="height: 20%;">
+            <h3>{{cart.name}}</h3>
+        </kendo-tilelayout-item-header>
+        <kendo-tilelayout-item-body>
+            <img src="{{cart.image}}" alt="" style="height: 50%;width: 50%;">
+            <div> Price : {{cart.price}}</div>
+            <div> Quantity : {{cart.quantity}}</div>
+            <button kendoButton themeColor="primary" class="form-button" (click)="removeToCart(cart.id)">Remove To Cart</button>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+</kendo-tilelayout>
+
+<kendo-tilelayout [columns]="2" autoFlow="none" [gap]="10">
+    <kendo-tilelayout-item [col]="1">
+        <kendo-tilelayout-item-header>
+            <div> <h3>Summary
+                <button kendoButton themeColor="primary" class="form-button" (click)="checkout()" style="float: right;">Checkout</button>
+            </h3>
+                
+            </div>
+           
+        </kendo-tilelayout-item-header>
+        
+        <kendo-tilelayout-item-body>
+            <table style="border: 1px solid black;">
+                <thead >
+                    <tr>
+                        <th>Amount</th>
+                        <th>Tax</th>
+                        <th>Delivery</th>
+                        <th>Discount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{priceSummary.price}}
+                        </td>
+                        <td>
+                            {{priceSummary.tax}}
+                        </td>
+                        <td>
+                            {{priceSummary.delivery}}
+                        </td>
+                        <td>
+                            {{priceSummary.discount}}
+                        </td>
+                        <td>
+                            {{priceSummary.total}}
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+</kendo-tilelayout>

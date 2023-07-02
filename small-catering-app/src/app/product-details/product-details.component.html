@@ -1,0 +1,22 @@
+<kendo-tilelayout [columns]="3" autoFlow="none" [gap]="10" [rowHeight]="350">
+    <kendo-tilelayout-item *ngIf="productData">
+        <kendo-tilelayout-item-header style="height: 20%;">
+            <h3>{{productData.name}}</h3>
+        </kendo-tilelayout-item-header>
+        <kendo-tilelayout-item-body>
+            <img src="{{productData.image}}" alt="Product" style="width:50%;height: 50%;">
+            <div style="margin: 5%;">
+                <kendo-label class="k-form" text="Quantity" style="padding-right: 5%;">
+                    <button kendoButton (click)="handleQuantity('min')">-</button>
+                    <input type="text" value="{{productQuantity}}" style="width: 10%;"/>
+                    <button kendoButton (click)="handleQuantity('plus')">+</button>
+                </kendo-label>   
+            </div>
+            <div style="margin: 5%;">
+                <button kendoButton themeColor="primary" class="form-button" *ngIf="removeCart" class="form-button" (click)=" removeToCart(productData.id)">Remove to
+                    Cart</button>
+                <button kendoButton themeColor="primary" class="form-button" *ngIf="!removeCart" class="form-button" (click)="addToCart()">Add to Cart</button>
+            </div>
+        </kendo-tilelayout-item-body>
+    </kendo-tilelayout-item>
+</kendo-tilelayout>

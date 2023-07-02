@@ -1,0 +1,28 @@
+<div class="example-wrap" style="margin: 3%;width: fit-content;">
+   
+    <p class="message">{{addProductMessage}}</p>
+    <form class="k-form" #addProduct="ngForm" (ngSubmit)="submit(addProduct.value)">
+        <fieldset class="k-form-fieldset">
+            <legend class="k-form-legend">Add New Product</legend>
+
+            <kendo-formfield>
+                <kendo-label text="Enter Product Name"></kendo-label>
+                <input type="text" name="name" ngModel kendoTextBox required />
+            </kendo-formfield>
+
+            <kendo-formfield>
+                <kendo-label text="Enter Product Price"></kendo-label>
+                <input type="text" name="price" ngModel kendoTextBox required />
+            </kendo-formfield>
+
+            <kendo-formfield>
+                <kendo-label text="Enter Product Image URL"></kendo-label>
+                <input type="text" name="image" ngModel kendoTextBox required />
+            </kendo-formfield>
+
+            <div class="k-form-buttons" style="margin-top: 5%;">
+                <button  kendoButton themeColor="primary" class="form-button">Add Product</button>
+            </div>
+      </fieldset>
+    </form>
+  </div>

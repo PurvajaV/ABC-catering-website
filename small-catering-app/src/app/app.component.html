@@ -1,0 +1,80 @@
+<kendo-appbar position="top">
+  <kendo-appbar-section>
+    <h1 class="title">ABC Catering</h1>
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer width="32px"></kendo-appbar-spacer>
+
+  <kendo-appbar-section>
+
+    <div *ngIf="menuType!=='seller' && menuType!=='default' && menuType!=='supplierdetail' " class="nav-search">
+      <!-- <input type="text" #searchInput (keyup)="searchProduct($event)" (blur)="hideSearch()" -->
+        <!-- placeholder="Search Products" /> -->
+       
+          <kendo-textbox   #searchInput (keyup)="searchProduct($event)" (blur)="hideSearch()"
+          placeholder="Search Products"></kendo-textbox>
+       
+      <button kendoButton (click)="submitSearch(searchInput.value)">Search</button>
+      <ul class="suggested-search" *ngIf="searchResult">
+        <li *ngFor="let item of searchResult">
+          <a (mousedown)="redirectToDetails(item.id)">{{item.name}}</a>
+        </li>
+      </ul>
+    </div>
+    <div [ngSwitch]="menuType">
+      <ul *ngSwitchCase="'default'">
+        <button kendoButton routerLink="">Home</button>
+        <button kendoButton routerLink="seller-auth">Employee-Login/Sign-up</button>
+        <button kendoButton routerLink="user-auth">Sell Products</button>
+        <button kendoButton routerLink="supplier" >Purchase Products</button>
+        <button kendoButton routerLink="reports">Reports</button>
+        
+      </ul>
+      <ul *ngSwitchCase="'user'">
+        <!-- <li><a routerLink="seller-auth">Seller</a></li> -->
+        <button routerLink="" kendoButton style="margin-left: 2%;">Home</button>
+        <kendo-avatar [imageSrc]="kendokaAvatar" shape="circle" width="26px" height="26px" style="position: absolute;margin-left: 66%;"></kendo-avatar>
+        <button kendoButton style="position: absolute;margin-left: 60%;"><a>{{userName | titlecase}}</a></button>
+        <button kendoButton routerLink="my-orders" style="margin-left: 2%;">My Orders</button>
+        <button kendoButton style="position: absolute;margin-left: 45%;"><a (click)="userLogout()">Customer Logout</a></button>
+        <button kendoButton style="position: absolute;margin-left: 55%;"><a [routerLink]="cartItems>0?'cart-page':null" >Cart({{cartItems}})</a></button>
+       
+      </ul>
+      <ul *ngSwitchCase="'seller'">
+        <button kendoButton routerLink="seller-add-product">Add Product</button>
+        <button kendoButton routerLink="seller-home">List</button>
+        <button kendoButton (click)="logout()">Seller Logout</button>
+        <button kendoButton style="position: absolute;margin-left: 72%;">{{sellerName | titlecase}}</button>
+        <kendo-avatar [imageSrc]="kendokaAvatar" shape="circle" width="26px" height="26px" style="position: absolute;margin-left: 80%;"></kendo-avatar>
+      </ul>
+      <ul *ngSwitchCase="'supplierdetail'">
+        <!-- <li><a routerLink="seller-auth">Seller</a></li> -->
+        <button kendoButton routerLink="purchase-item-details">Home</button>
+        <button kendoButton routerLink="supplier-orders">Purchase Orders</button>
+        <button kendoButton [routerLink]="cartItems>0?'purchase-cart-page':null">Cart({{cartItems}})</button>
+        <button kendoButton (click)="supplierLogout()" style="position: absolute;margin-left: 73%;">Supplier Logout</button>
+      </ul>
+    </div>
+
+
+
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer></kendo-appbar-spacer>
+
+  <!-- <kendo-appbar-section class="actions">
+    <kendo-badge-container>
+      <button kendoButton fillMode="flat">
+        <kendo-svg-icon [icon]="bellIcon"></kendo-svg-icon>
+      </button>
+      <kendo-badge shape="dot" themeColor="warning" size="small" position="inside"></kendo-badge>
+    </kendo-badge-container>
+    <span class="k-appbar-separator"></span>
+  </kendo-appbar-section> -->
+
+  <!-- <kendo-appbar-section>
+    <kendo-avatar [imageSrc]="kendokaAvatar" shape="circle" width="26px" height="26px"></kendo-avatar>
+  </kendo-appbar-section>-->
+</kendo-appbar>
+
+<router-outlet></router-outlet>
